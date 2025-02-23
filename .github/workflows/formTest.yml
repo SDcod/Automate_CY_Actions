@@ -12,13 +12,11 @@ jobs:
       - name: Cypress_run_formTests_chrome
         uses: cypress-io/github-action@v6
         with:
-          browser: chrome
-          command: npm run cypress:run:formTests
+          command: npm run cypress:run:formTests:chrome
           
       
       - name: Cypress_run_formTests_firefox
         uses: cypress-io/github-action@v6
         with:
-          browser: firefox
-          command: npm run cypress:run:formTests
+          command: npm run cypress:run:formTests:firefox
           
