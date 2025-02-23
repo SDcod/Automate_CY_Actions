@@ -1,0 +1,1 @@
+"A cypress automation project"  
