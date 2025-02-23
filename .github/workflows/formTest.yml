@@ -13,11 +13,7 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           command: npm run cypress:run:formTests:chrome
-          
-      
-
-
-jobs:
+              
   cypress-run-formTest-firefox:
     runs-on: ubuntu-24.04
     steps:
