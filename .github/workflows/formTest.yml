@@ -8,6 +8,12 @@ jobs:
         uses: actions/checkout@v4
       # Install npm dependencies, cache them correctly
       # and run all Cypress tests
+      - name: Install Browsers
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y google-chrome-stable firefox
+
+      
       - name: Cypress_run_formTests_chrome
         uses: cypress-io/github-action@v6
         with:
