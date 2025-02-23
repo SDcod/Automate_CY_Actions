@@ -1,7 +1,7 @@
 name: form tests
 on: push
 jobs:
-  cypress-run:
+  cypress-run-formTest-chrome:
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout
@@ -15,6 +15,15 @@ jobs:
           command: npm run cypress:run:formTests:chrome
           
       
+
+
+jobs:
+  cypress-run-formTest-firefox:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Cypress_run_formTests_firefox
         uses: cypress-io/github-action@v6
         with:
