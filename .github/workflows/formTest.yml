@@ -24,4 +24,10 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           command: npm run cypress:run:formTests:firefox
+
+      - name: Upload test results
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Mocha-report-firefox
+          path: cypress/reports/html 
           
