@@ -15,6 +15,7 @@ jobs:
           command: npm run cypress:run:formTests:chrome
 
       - name: Upload test results
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: Mocha-report-chrome
@@ -31,9 +32,4 @@ jobs:
         with:
           command: npm run cypress:run:formTests:firefox
 
-      - name: Upload test results
-        uses: actions/upload-artifact@v4
-        with:
-          name: Mocha-report-firefox
-          path: cypress/reports/html 
           

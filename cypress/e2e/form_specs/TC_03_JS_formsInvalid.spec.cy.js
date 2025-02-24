@@ -1,19 +1,17 @@
-import { beforeEach } from "mocha";
 import Homepage from "../../pages/Homepage";
 import FormsPage from "../../pages/FormsPage";
 
-describe("valid submission form test spec", () => {
+describe("invalid submission form test spec", () => {
   beforeEach(() => {
     cy.visit("/");
   });
 
-  it("validates form submission", () => {
+  it("validates invalid form submission", () => {
     //visit the form page
     Homepage.clickFormFields();
 
     //perform form actions
-    FormsPage.typeInNameInput("John Doe")
-      .typeInPasswordInput("pass123")
+    FormsPage.typeInPasswordInput("pass123")
       .checkAllDrinks()
       .selectColor("color4")
       .selectAutomationDropdown("Yes");
@@ -24,9 +22,6 @@ describe("valid submission form test spec", () => {
 
     FormsPage.clickSubmitButton();
 
-    cy.get("@alertStub").should(
-      "have.been.calledOnceWith",
-      "Message received!"
-    );
+    cy.get("@alertStub").should("not.have.been.called");
   });
 });
