@@ -2,6 +2,9 @@ const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
   reporter: "cypress-mochawesome-reporter",
+  reporterOptions: {
+    charts: true,
+  },
 
   e2e: {
     setupNodeEvents(on, config) {
@@ -13,7 +16,8 @@ module.exports = defineConfig({
     viewportWidth: 1920,
     viewportHeight: 1080,
     retries: { openMode: 0, runMode: 2 },
-    video: true,
+    video: false,
     videoCompression: 32,
+    watchForFileChanges: false,
   },
 });

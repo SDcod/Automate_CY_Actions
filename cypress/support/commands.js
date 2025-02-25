@@ -27,3 +27,33 @@
 Cypress.Commands.add("data_cy", (locator) => {
   return cy.get(`[data-cy=${locator}]`);
 });
+
+Cypress.Commands.add("verifyAlert", (expectedText, alertButton) => {
+  cy.window().then((win) => {
+    cy.stub(win, "alert").as("alertStub");
+  });
+  // cy.on("window:alert", (str) => {
+  //   expect(str).to.equal(expectedText);
+  // });
+  alertButton.click();
+
+  cy.get("@alertStub").should("have.been.calledOnceWith", expectedText);
+});
+
+//Command to verify popup in both cases OK and Cancel
+Cypress.Commands.add(
+  "verifyConfirm",
+  (expectedText, decision, confirmButton) => {
+    cy.window().then((win) => {
+      if (decision) {
+        cy.stub(win, "confirm").returns(true).as("confirmStub");
+      } else {
+        cy.stub(win, "confirm").returns(false).as("confirmStub");
+      }
+    });
+
+    confirmButton.click();
+
+    cy.get("@confirmStub").should("have.been.calledOnceWith", expectedText);
+  }
+);
