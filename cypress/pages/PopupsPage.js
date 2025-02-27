@@ -5,6 +5,7 @@ class PopupsPage {
     promptBtn: () => cy.get("#prompt"),
     tooltipBtn: () => cy.get(".tooltip_1"),
     confirmResult: () => cy.get("#confirmResult"),
+    promptResult: () => cy.get("#promptResult"),
   };
 
   //   actions
@@ -32,6 +33,37 @@ class PopupsPage {
 
       //verify result text
       this.elements.confirmResult().contains("Cancel it is!");
+    } else {
+      cy.log("Please pass correct decision in the test case : 'ok'/'cancel'");
+    }
+    return this;
+  }
+
+  verifyPromptPopup(expectedText, decision, promptText = "") {
+    if (decision.toLowerCase() == "ok") {
+      cy.verifyPromptPopup(
+        expectedText,
+        promptText,
+        this.elements.promptBtn(),
+        true
+      );
+      //verify result text conditionally based on prompt text
+      if (promptText) {
+        this.elements
+          .promptResult()
+          .contains(`Nice to meet you, ${promptText}!`);
+      } else {
+        this.elements.promptResult().contains("Fine, be that way...");
+      }
+    } else if (decision.toLowerCase() == "cancel") {
+      cy.verifyPromptPopup(
+        expectedText,
+        promptText,
+        this.elements.promptBtn(),
+        false
+      );
+      //verify result text
+      this.elements.promptResult().contains("Fine, be that way...");
     } else {
       cy.log("Please pass correct decision in the test case : 'ok'/'cancel'");
     }

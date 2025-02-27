@@ -37,5 +37,24 @@ describe("Popups Test suite", () => {
       cy.visit("/");
       Homepage.clickPopups();
     });
+
+    it("validate prompt popup with : OK", () => {
+      //click prompt button and verify the expected text when clicking OK.
+      PopupsPage.verifyPromptPopup(
+        "Hi there, what's your name?",
+        "ok",
+        "John Doe"
+      );
+    });
+
+    it("validate empty prompt popup with : OK", () => {
+      //click prompt button and verify the expected text when clicking OK.
+      PopupsPage.verifyPromptPopup("Hi there, what's your name?", "ok");
+    });
+
+    it("validate prompt popup with : cancel", () => {
+      //click prompt button and verify the expected text when clicking cancel.
+      PopupsPage.verifyPromptPopup("Hi there, what's your name?", "cancel");
+    });
   });
 });

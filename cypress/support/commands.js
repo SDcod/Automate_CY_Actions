@@ -57,3 +57,21 @@ Cypress.Commands.add(
     cy.get("@confirmStub").should("have.been.calledOnceWith", expectedText);
   }
 );
+
+//Command to verify prompt popup
+Cypress.Commands.add(
+  "verifyPromptPopup",
+  (expectedText, promptText, promptBtn, decision) => {
+    cy.window().then((win) => {
+      if (decision) {
+        cy.stub(win, "prompt").returns(promptText).as("promptStub");
+      } else {
+        cy.stub(win, "prompt").returns(null).as("promptStub");
+      }
+    });
+
+    promptBtn.click();
+
+    cy.get("@promptStub").should("have.been.calledOnceWith", expectedText);
+  }
+);
