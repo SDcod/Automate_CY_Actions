@@ -2,12 +2,12 @@ import Homepage from "../pages/Homepage";
 import PopupsPage from "../pages/PopupsPage";
 
 describe("Popups Test suite", () => {
+  beforeEach(() => {
+    cy.visit("/");
+    Homepage.clickPopups();
+  });
   //validate alert tests
   context("Alert Test spec", () => {
-    beforeEach(() => {
-      cy.visit("/");
-      Homepage.clickPopups();
-    });
     it("validate alert popup", () => {
       //click alert button and verify the expected text.
       PopupsPage.verifyAlertPopup();
@@ -56,5 +56,9 @@ describe("Popups Test suite", () => {
       //click prompt button and verify the expected text when clicking cancel.
       PopupsPage.verifyPromptPopup("Hi there, what's your name?", "cancel");
     });
+  });
+
+  it.only("validate tooltip", () => {
+    PopupsPage.clickToolTip();
   });
 });

@@ -69,6 +69,12 @@ class PopupsPage {
     }
     return this;
   }
+
+  clickToolTip() {
+    cy.get("#myTooltip").should("not.be.visible");
+    this.elements.tooltipBtn().click();
+    cy.get("#myTooltip").should("be.visible");
+  }
 }
 
 export default new PopupsPage();

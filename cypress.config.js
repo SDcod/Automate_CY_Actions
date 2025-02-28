@@ -12,7 +12,7 @@ module.exports = defineConfig({
       require("cypress-mochawesome-reporter/plugin")(on);
     },
     baseUrl: "https://practice-automation.com/",
-    defaultCommandTimeout: 10000,
+    defaultCommandTimeout: 6000,
     viewportWidth: 1920,
     viewportHeight: 1080,
     retries: { openMode: 0, runMode: 2 },

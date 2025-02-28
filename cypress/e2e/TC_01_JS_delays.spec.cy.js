@@ -3,9 +3,5 @@ describe("Delay test spec", () => {
     cy.visit("javascript-delays/");
     cy.get("#start").click();
     cy.get("#delay", { timeout: 12000 }).should("have.value", "Liftoff!");
-    
-  
   });
-
-  
 });
