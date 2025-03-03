@@ -10,6 +10,7 @@ describe("Date select with pagination", () => {
   });
 });
 
+//Utility function to handle pagination date in yyyy-mm-dd
 function selectDate(date) {
   let [Tyear, Tmonth, Tday] = date.split("-");
   Tmonth = parseInt(Tmonth - 1);
