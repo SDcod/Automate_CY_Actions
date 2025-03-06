@@ -12,6 +12,23 @@ describe("Tables suite", () => {
     TablesPage.validateItemPrice("Laptop", "$1200.00");
     TablesPage.validateItemPrice("Marbles", "$1.25");
   });
+  //Pagination test based on the dropdown selection
 
-  it("validate functionality of sortable table");
+  it("Sortable Table : Pagination validation", () => {
+    let entriesPerPage = 10;
+    let totalNumberOfEntries = 25;
+
+    TablesPage.selectEntriesPerPage(
+      entriesPerPage
+    ).ClickEachAndValidateNumberOfPages(
+      Math.ceil(totalNumberOfEntries / entriesPerPage)
+    );
+  });
+
+  //Sorting function test for table
+  it.only("Sortable Table : validate sort functions", () => {
+    //sort by rank
+
+    TablesPage.sortByRankValidation();
+  });
 });
