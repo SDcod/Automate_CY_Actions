@@ -9,6 +9,11 @@ class Homepage {
     Tables: () => cy.contains("Tables"),
     WindowOperations: () => cy.contains("Window Operations"),
     Hover: () => cy.contains("Hover"),
+    Gestures: () => cy.contains("Gestures"),
+    FileDownload: () => cy.contains("File Download"),
+    FileUpload: () => cy.contains("File Upload"),
+    Spinners: () => cy.contains("Spinners"),
+    Iframes: () => cy.contains("Iframes"),
   };
 
   //   actions
@@ -47,6 +52,25 @@ class Homepage {
 
   clickHover() {
     this.elements.Hover().click();
+  }
+
+  clickGestures() {
+    this.elements.Gestures().click();
+  }
+  clickFileDownload() {
+    this.elements.FileDownload().click();
+  }
+
+  clickFileUpload() {
+    this.elements.FileUpload().click();
+  }
+
+  clickSpinners() {
+    this.elements.Spinners().click();
+  }
+
+  clickIframes() {
+    this.elements.Iframes().click();
   }
 }
 
